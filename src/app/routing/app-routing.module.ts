@@ -6,6 +6,7 @@ import { FeedComponent } from '../components/feed.component';
 import { FriendRequestComponent } from '../components/friendRequest.component';
 import { LoginComponent } from '../components/login.component';
 import { AppComponent } from '../components/app.component';
+import {PageNotFoundComponent} from '../components/pageNotFound.component'
 
 
 
@@ -40,7 +41,11 @@ const routes: Routes = [
 		path: '',
 		redirectTo: '/login', 
 		pathMatch: 'full',
-	}
+	},
+	 {
+		  path: '**', 
+		  component: PageNotFoundComponent
+	 }
 ]
 
 @NgModule({
