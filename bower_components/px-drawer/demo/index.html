@@ -1,0 +1,141 @@
+<!-- Common imports -->
+<link rel="import" href="../../polymer/polymer.html" />
+<link rel="import" href="../../px-polymer-font-awesome/px-polymer-font-awesome.html" />
+
+<!-- Common demo imports -->
+<link rel="import" href="../../px-demo/px-demo-header.html" />
+<link rel="import" href="../../px-demo/px-demo-api-viewer.html" />
+<link rel="import" href="../../px-demo/px-demo-footer.html" />
+<link rel="import" href="../../px-demo/px-demo-configs.html" />
+<link rel="import" href="../../px-demo/px-demo-props.html" />
+<link rel="import" href="../../px-demo/px-demo-interactive.html" />
+<link rel="import" href="../../px-demo/px-demo-component-snippet.html" />
+
+<!-- Imports for this componnent -->
+<link rel="import" href="../../px-demo/css/px-demo-styles.html" />
+<link rel="import" href="../px-drawer.html" />
+
+<!-- Demo DOM module -->
+<dom-module id="local-element-demo">
+  <template>
+    <style include="px-demo-styles" is="custom-style"></style>
+
+    <!-- Header -->
+    <px-demo-header
+        module-name="px-drawer"
+        description="The px-drawer is a navigation drawer that can slide in from the left, right, top or bottom.">
+    </px-demo-header>
+
+    <!-- Interactive -->
+    <px-demo-interactive>
+      <!-- Configs -->
+      <px-demo-configs configs="[[configs]]" props="{{props}}" chosen-config="{{chosenConfig}}"></px-demo-configs>
+
+      <!-- Props -->
+      <px-demo-props props="{{props}}" config="[[chosenConfig]]"></px-demo-props>
+
+      <!-- Component ---------------------------------------------------------->
+      <px-demo-component>
+        <p style="padding:0 0 5px;">This component is meant to be used on mobile devices. To try it, make sure your browser is in mobile-preview development mode or open this page on your mobile device. To open the menu, swipe in the black rectangle below from the left side of the screen to the right (assuming 'align' is set to 'left').</p>
+        <div style="overflow: hidden;position: relative;height: 60%;width: 100%;min-height: 200px;border: 2px solid #000;">
+          <px-drawer
+              opened="{{props.opened.value}}"
+              persistent="{{props.persistent.value}}"
+              overlay="{{props.overlay.value}}"
+              fixed="{{props.fixed.value}}"
+              swipe-open="{{props.swipeOpen.value}}"
+              debug="{{props.debug.value}}"
+              align="{{props.align.value}}">
+              <p class="u-m">This is content inside of the drawer</p>
+          </px-drawer>
+        </div>
+      </px-demo-component>
+      <!-- END Component ------------------------------------------------------>
+
+      <px-demo-component-snippet
+          element-properties="{{props}}"
+          element-name="px-drawer">
+      </px-demo-component-snippet>
+    </px-demo-interactive>
+
+    <!-- API Viewer -->
+    <px-demo-api-viewer source="px-drawer"></px-demo-api-viewer>
+
+    <!-- Footer -->
+    <px-demo-footer></px-demo-footer>
+
+  </template>
+
+</dom-module>
+<script>
+  Polymer({
+    is: 'local-element-demo',
+
+    properties: {
+
+      props: {
+        type: Object,
+        value: function(){ return this.demoProps; }
+      },
+
+      configs: {
+        type: Array,
+        value: function(){
+          return [
+            { configName: "Default",
+              configReset: true }
+          ]
+        }
+      }
+    },
+
+    /**
+     * A reference for `this.props`. Read the documentation there.
+     */
+    demoProps: {
+      opened: {
+        type: Boolean,
+        defaultValue: false,
+        inputType: 'toggle'
+      },
+
+      persistent: {
+        type: Boolean,
+        defaultValue: false,
+        inputType: 'toggle'
+      },
+
+      overlay: {
+        type: Boolean,
+        defaultValue: true,
+        inputType: 'toggle'
+      },
+
+      swipeOpen: {
+        type: Boolean,
+        defaultValue: true,
+        inputType: 'toggle'
+      },
+
+      debug: {
+        type: Boolean,
+        defaultValue: true,
+        inputType: 'toggle'
+      },
+
+      fixed: {
+        type: Boolean,
+        defaultValue: false,
+        inputType: 'toggle'
+      },
+
+      align: {
+        type: String,
+        defaultValue: 'left',
+        inputType: 'dropdown',
+        inputChoices: ['left', 'right', 'top', 'bottom']
+      }
+    }
+
+  });
+</script>

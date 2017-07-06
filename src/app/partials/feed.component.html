@@ -1,0 +1,90 @@
+<header-nav></header-nav>
+<div class="feed-content" *ngFor="let req of feedsData">
+    <div class="row">
+		<div class="col-lg-12">
+			<div>
+				<img src="assets/images/person.png" alt="Person">
+			</div>
+			
+			<div>
+				<div>
+					<span>{{req.AssetName}} </span> <br>
+					<span>{{req.AssetLocation}} </span> <br>
+					<span>{{req.Project}} </span> <br>
+					<span>{{req.Industry}} </span> <br>
+					<span>{{req.Department}} </span> <br>
+					<span>{{req.ProjectRef}} </span> <br>
+					<span>{{req.CreatedBy}} </span>  
+				</div>
+				<div class="like-comment-content">
+					<a href="" data-toggle="modal" data-target="#likeModal"   (click)="setModelData(req)">
+						<span class="glyphicon glyphicon-thumbs-up"></span>
+						<span>{{req.LikedBy.length}}</span>
+					</a>
+
+					<a class="like-comment-spacing" href="" data-toggle="modal" data-target="#commentModal">
+						<span class="">4 comments</span>
+					</a>
+					
+				</div>
+			</div>			
+		</div>
+	</div>	
+    <div class="like-comment-share col-lg-12 col-md-12 col-sm-12">
+        <span class="col-lg-4 col-md-4 col-sm-4">Like</span>
+        <span class="col-lg-4 col-md-4 col-sm-4">Comment</span>
+        <span class="col-lg-4 col-md-4 col-sm-4">Share</span>
+    </div>
+
+	<!-- Modal comment-->
+	<div class="modal fade" id="commentModal" role="dialog">
+		<div class="modal-dialog">
+    
+			<!-- Modal content-->
+			<div class="modal-content">
+				<div class="modal-body">
+					<div>
+						<img src="assets/images/person.png"> <span class="notification-name">Rajesh</span><br>
+						<span style="color: #a2a2c3;">
+							Awesome!!!
+						</span>
+					</div><br><br><br><br><br>
+
+					<div class="modal-footer">
+					  <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+					</div>
+				</div>
+      
+			</div>
+		</div>
+	</div>
+
+	
+    					
+</div>
+	
+	
+	<!-- Modal Like-->
+	<div class="modal fade" id="likeModal" role="dialog">
+		<div class="modal-dialog">
+    
+			<!-- Modal content-->
+			<div class="modal-content">
+				<div class="modal-body">
+					<div class="liked-modal-count">
+						<span class="glyphicon glyphicon-thumbs-up"></span>
+						<span>{{feedData.LikedBy.length}}</span>
+					</div>
+
+					<div *ngFor="let names of feedData.LikedBy">
+						{{names.name}}	
+					</div>
+
+					<div class="modal-footer">
+					  <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+					</div>
+				</div>
+      
+			</div>
+		</div>
+	</div>

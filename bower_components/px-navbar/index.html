@@ -1,0 +1,81 @@
+<html>
+
+	<head>
+		<script src="../webcomponentsjs/webcomponents-lite.min.js"></script>
+		<title>px-navbar Demo</title>
+		<meta name="viewport" content="initial-scale=1, maximum-scale=1">
+		<meta name="apple-mobile-web-app-capable" content="yes">
+		<meta name="apple-mobile-web-app-status-bar-style" content="black">
+		<link rel="import" href="../px-theme/px-theme-styles.html">
+		<link rel="import" href="../iron-icon/iron-icon.html">
+		<link rel="import" href="../iron-input/iron-input.html">
+		<link rel="import" href="../px-demo-template/px-demo-template.html">
+		<link rel="import" href="px-navbar.html">
+	</head>
+
+	<body unresolved>
+
+		<template id="app" is="dom-bind">
+			<style include="px-demo-template-css" is="custom-style">
+			<style include="px-theme-styles" is="custom-style">
+			ul,
+			li {
+				list-style-type: none;
+				margin: 0;
+				padding: 0;
+			}
+			</style>
+			<style include="px-theme-styles" is="custom-style"></style>
+
+			<px-demo-template id="test"
+				repo-name="px-navbar"
+				element-name="px-navbar"
+				heading="px-navbar"
+				description="The px-navbar element provides an easy way to create navigation bars for your apps."
+				element-props="{{demoProps}}">
+
+				<div properties>
+					<ul class="list--bare u-m0 u-p0">
+						<li class="u-mb-">
+							<label for="title">Title</label>
+							<input is="iron-input" bind-value="{{demoProps.title}}" type="text" class="text-input">
+						</li>
+						<li class="u-mb">
+							<label for="subtitle">Subtitle</label>
+								<input is="iron-input" bind-value="{{demoProps.subtitle}}" type="text" class="text-input">
+						</li>
+						<li class="u-mb-">
+							<div class="flex u-mb-">
+								<input id="back" class="toggle__input toggle__input--small" type="checkbox" checked="{{demoProps.back::change}}">
+								<label for="back" class="toggle__label toggle__label--small"></label>
+								<div class="u-ml-">Back button</div>
+							</div>
+						</li>
+						<li class="u-mb-" hidden$="{{!demoProps.back}}">
+							<label for="title">Back Label</label>
+								<input is="iron-input" bind-value="{{demoProps.backLabel}}" type="text" class="text-input">
+						</li>
+					</ul>
+				</div>
+
+				<div demo>
+					<px-navbar id="demo1" title="{{demoProps.title}}" subtitle="{{demoProps.subtitle}}" back="[[demoProps.back]]" back-label="[[demoProps.backLabel]]"></px-navbar>
+				</div>
+			</px-demo-template>
+
+
+		</template>
+
+		<script type="text/javascript">
+			document.addEventListener('WebComponentsReady', function() {
+				var scope = document.querySelector('#app');
+				scope.demoProps = {
+					back: true,
+					backLabel: 'Back',
+					title: 'Navbar',
+					subtitle: 'Sub Title'
+				};
+			});
+		</script>
+	</body>
+</html>

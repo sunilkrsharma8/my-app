@@ -1,0 +1,50 @@
+{
+  "name": "px-drawer",
+  "version": "1.2.7",
+  "description": "A responsive mobile first web component for hiding content off screen.",
+  "authors": [
+    "General Electric",
+    "Jonnie Spratley <jonnie.spratley@ge.com>"
+  ],
+  "main": [
+    "px-drawer.html"
+  ],
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "sass",
+    "*.md",
+    "scripts",
+    ".github",
+    "gulpfile.js",
+    "wct.conf.json",
+    "test",
+    "OSS_Notice.pdf",
+    "*.png",
+    "npm-debug.log",
+    ".jshintrc",
+    ".editorconfig"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/PredixDev/px-drawer.git"
+  },
+  "keywords": [
+    "px",
+    "px-mobile"
+  ],
+  "dependencies": {
+    "polymer": "^1.6.1",
+    "iron-resizable-behavior": "^1.0.5",
+    "iron-fit-behavior": "^1.2.5",
+    "px-dropdown": "^3.1.0"
+  },
+  "devDependencies": {
+    "px-starter-kit-design": "^0.7.4",
+    "px-demo": "^1.4.5",
+    "px-code-design": "^1.1.5",
+    "px-toggle-design": "^1.1.6",
+    "px-mobile-design": "^0.2.3"
+  }
+}

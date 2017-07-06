@@ -1,0 +1,41 @@
+{
+    "name": "px-navbar",
+    "version": "0.2.1",
+    "description": "A px mobile web component.",
+    "keywords": [
+        "px",
+        "px-mobile"
+    ],
+    "license": "ISC",
+    "author": "Jonnie Spratley",
+    "devDependencies": {
+        "bower": "*",
+        "browser-sync": "^2.13.0",
+        "coveralls": "^2.11.9",
+        "gulp": "^3.9.1",
+        "gulp-autoprefixer": "^3.1.0",
+        "gulp-clean": "^0.3.2",
+        "gulp-bump": "^2.4.0",
+        "gulp-concat": "^2.6.0",
+        "gulp-cssmin": "^0.1.7",
+        "gulp-load-plugins": "^1.2.0",
+        "gulp-rename": "^1.2.2",
+        "gulp-if": "^2.0.1",
+        "gulp-sass": "^2.3.2",
+        "gulp-sequence": "^0.4.5",
+        "gulp-size": "^2.1.0",
+        "gulp-match": "^1.0.2",
+        "gulp-sourcemaps": "^1.6.0",
+        "gulp-style-modules": "^0.1.0",
+        "istanbul-coveralls": "^1.0.3",
+        "gulp-vulcanize": "^6.1.0",
+        "node-sass-import-once": "^1.2.0",
+        "stream-combiner2": "^1.1.1",
+        "yargs": "^6.0.0",
+        "polymer-css-compiler": "git+https://github.com/jonniespratley/polymer-css-compiler.git",
+        "sassdoc": "^2.1.20",
+        "web-component-tester": "*",
+        "web-component-tester-istanbul": "https://github.com/t2ym/web-component-tester-istanbul/tarball/0.10.1",
+        "webdriver-support": "^2.2.2"
+    }
+}

@@ -1,0 +1,19 @@
+{
+  "name": "myCommunityApp",
+  "description": "internal communication",
+  "main": "",
+  "license": "MIT",
+  "homepage": "",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "px-data-table": "https://github.com/PredixDev/px-data-table.git#^3.0.3",
+    "px-navbar": "^0.2.1",
+    "px-spinner": "^1.0.0"
+  }
+}

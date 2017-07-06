@@ -1,0 +1,39 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta charset="utf-8">
+  <title>MyCommunityApp</title>
+  <script src="https://ajax.aspnetcdn.com/ajax/jQuery/jquery-3.2.1.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+  <!--<script>
+    $(document).ready(function () {
+        var sideslider = $('[data-toggle=collapse-side]');
+        var sel = sideslider.attr('data-target');
+        var sel2 = sideslider.attr('data-target-2');
+        sideslider.click(function (event) {
+            $(sel).toggleClass('in');
+            $(sel2).toggleClass('out');
+        });
+    });
+</script> -->
+  <script>
+    $(".nav a").on("click", function () {
+      alert("IN");
+      $(".nav").find(".active").removeClass("active");
+      $(this).parent().addClass("active");
+    });
+  </script>
+  <base href="/">
+  <link rel="icon" type="image/x-icon" href="favicon.ico">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <link rel="stylesheet" href="assets/css/facebookCSS.css">
+  <link rel="stylesheet" href="assets/css/friendsCommunity.css">
+</head>
+
+<body>
+  <approot></approot>
+</body>
+
+</html>
