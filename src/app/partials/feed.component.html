@@ -15,11 +15,13 @@
 					<span>Department : {{req.department}} </span> <br>
 					<span>ProjectRef : {{req.projectRef}} </span> <br>
 					<span>CreatedBy : {{req.createdBy.name}} </span>
+
 				</div>
 				<div class="like-comment-content">
 					<a href="" data-toggle="modal" data-target="#likeModal" (click)="setModelData(req)">
 						<span class="glyphicon glyphicon-thumbs-up"></span>
 						<span *ngIf="req.likedBy">{{req.likedBy.length}}</span> 
+
 					</a>
 					<div class="like-comment-spacing">
 						<a href="" data-toggle="modal" data-target="#commentModal" (click)="setModelData(req)">
@@ -66,7 +68,31 @@
 		</div>
 	</div>
 </div>
+	
+	
+	<!-- Modal Like-->
+	<div class="modal fade" id="likeModal" role="dialog">
+		<div class="modal-dialog">
+    
+			<!-- Modal content-->
+			<div class="modal-content">
+				<div class="modal-body">
+					<div class="liked-modal-count">
+						<span class="glyphicon glyphicon-thumbs-up"></span>
+						<span *ngIf="feedData.LikedBy">{{feedData.likedBy.length}}</span>
+					</div>
 
+					<div *ngFor="let names of feedData.likedBy">
+						{{names.name}}	
+					</div>
+					
+					</div>
+
+		</div>
+	</div>
+</div>
+
+				
 
 <!-- Modal comment-->
 <div class="modal fade" id="commentModal" role="dialog">

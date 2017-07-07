@@ -11,6 +11,7 @@ import { FeedComponent } from '../components/feed.component';
 import { FriendRequestComponent } from '../components/friendRequest.component';
 import { AppRoutingModule } from '../routing/app-routing.module';
 import { FriendReqService } from '../services/friendRequest.service';
+import { PageNotFoundComponent } from '../components/pageNotFound.component'
 
 @NgModule({
   declarations: [
@@ -20,7 +21,8 @@ import { FriendReqService } from '../services/friendRequest.service';
     HomeComponent,
     FeedComponent,
     FriendRequestComponent,
-    NotificationComponent
+    NotificationComponent,
+    PageNotFoundComponent
   ],
   imports: [
     BrowserModule,

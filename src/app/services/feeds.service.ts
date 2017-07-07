@@ -15,6 +15,7 @@ export class FeedsService {
     });
     private getEmpUrl = 'https://predix-asset.run.aws-usw02-pr.ice.predix.io/AssetDataVal';  // URL to web api
 
+
     constructor(private http: Http) { }
 
     getFeeds(): Promise<FeedsData[]> {
