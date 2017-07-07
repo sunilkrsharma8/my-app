@@ -68,31 +68,6 @@
 		</div>
 	</div>
 </div>
-	
-	
-	<!-- Modal Like-->
-	<div class="modal fade" id="likeModal" role="dialog">
-		<div class="modal-dialog">
-    
-			<!-- Modal content-->
-			<div class="modal-content">
-				<div class="modal-body">
-					<div class="liked-modal-count">
-						<span class="glyphicon glyphicon-thumbs-up"></span>
-						<span *ngIf="feedData.LikedBy">{{feedData.likedBy.length}}</span>
-					</div>
-
-					<div *ngFor="let names of feedData.likedBy">
-						{{names.name}}	
-					</div>
-					
-					</div>
-
-		</div>
-	</div>
-</div>
-
-				
 
 <!-- Modal comment-->
 <div class="modal fade" id="commentModal" role="dialog">
