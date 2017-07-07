@@ -6,8 +6,6 @@ import { MainComponent } from './header-nav.component';
   templateUrl: './../partials/app.component.html'
 })
 export class AppComponent {
- ngOnInit(): void {
-     console.log("Hi");
-  }
+ 
 
 }

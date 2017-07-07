@@ -1,90 +1,121 @@
 <header-nav></header-nav>
 <div class="feed-content" *ngFor="let req of feedsData">
-    <div class="row">
+	<div class="row">
 		<div class="col-lg-12">
 			<div>
 				<img src="assets/images/person.png" alt="Person">
 			</div>
-			
+
 			<div>
 				<div>
-					<span>{{req.AssetName}} </span> <br>
-					<span>{{req.AssetLocation}} </span> <br>
-					<span>{{req.Project}} </span> <br>
-					<span>{{req.Industry}} </span> <br>
-					<span>{{req.Department}} </span> <br>
-					<span>{{req.ProjectRef}} </span> <br>
-					<span>{{req.CreatedBy}} </span>  
+					<span>AssetName : {{req.assetName}} </span> <br>
+					<span>AssetLocation : {{req.assetLocation}} </span> <br>
+					<span>Project : {{req.project}} </span> <br>
+					<span>Industry : {{req.industry}} </span> <br>
+					<span>Department : {{req.department}} </span> <br>
+					<span>ProjectRef : {{req.projectRef}} </span> <br>
+					<span>CreatedBy : {{req.createdBy.name}} </span>
 				</div>
 				<div class="like-comment-content">
-					<a href="" data-toggle="modal" data-target="#likeModal"   (click)="setModelData(req)">
+					<a href="" data-toggle="modal" data-target="#likeModal" (click)="setModelData(req)">
 						<span class="glyphicon glyphicon-thumbs-up"></span>
-						<span>{{req.LikedBy.length}}</span>
+						<span *ngIf="req.likedBy">{{req.likedBy.length}}</span> 
 					</a>
-
-					<a class="like-comment-spacing" href="" data-toggle="modal" data-target="#commentModal">
-						<span class="">4 comments</span>
-					</a>
-					
-				</div>
-			</div>			
-		</div>
-	</div>	
-    <div class="like-comment-share col-lg-12 col-md-12 col-sm-12">
-        <span class="col-lg-4 col-md-4 col-sm-4">Like</span>
-        <span class="col-lg-4 col-md-4 col-sm-4">Comment</span>
-        <span class="col-lg-4 col-md-4 col-sm-4">Share</span>
-    </div>
-
-	<!-- Modal comment-->
-	<div class="modal fade" id="commentModal" role="dialog">
-		<div class="modal-dialog">
-    
-			<!-- Modal content-->
-			<div class="modal-content">
-				<div class="modal-body">
-					<div>
-						<img src="assets/images/person.png"> <span class="notification-name">Rajesh</span><br>
-						<span style="color: #a2a2c3;">
-							Awesome!!!
-						</span>
-					</div><br><br><br><br><br>
-
-					<div class="modal-footer">
-					  <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+					<div class="like-comment-spacing">
+						<a href="" data-toggle="modal" data-target="#commentModal" (click)="setModelData(req)">
+							<span class="padding-right" *ngIf="req.commentBy">{{req.commentBy.length}} Comments</span> 
+							<span *ngIf="req.sharedBy">{{req.sharedBy.length}} Share</span>
+						</a>
 					</div>
+
 				</div>
-      
 			</div>
 		</div>
 	</div>
-
-	
-    					
+	<div class="like-comment-share col-lg-12 col-md-12 col-sm-12">
+		<span class="col-lg-4 col-md-4 col-sm-4"><a (click)="clickedLike(req)">Like</a></span>
+		<span class="col-lg-4 col-md-4 col-sm-4"><a data-toggle="modal" data-target="#commentModal" (click)="setModelData(req)">Comment</a></span>
+		<span class="col-lg-4 col-md-4 col-sm-4"><a data-toggle="modal" data-target="#shareModal">Share</a></span>
+	</div>
 </div>
-	
-	
-	<!-- Modal Like-->
-	<div class="modal fade" id="likeModal" role="dialog">
-		<div class="modal-dialog">
-    
-			<!-- Modal content-->
-			<div class="modal-content">
-				<div class="modal-body">
-					<div class="liked-modal-count">
-						<span class="glyphicon glyphicon-thumbs-up"></span>
-						<span>{{feedData.LikedBy.length}}</span>
-					</div>
 
-					<div *ngFor="let names of feedData.LikedBy">
-						{{names.name}}	
-					</div>
 
-					<div class="modal-footer">
-					  <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+<!-- Modal Like-->
+<div class="modal fade" id="likeModal" role="dialog">
+	<div class="modal-dialog">
+
+		<!-- Modal content-->
+		<div class="modal-content">
+			<div class="modal-body">
+				<div class="liked-modal-count">
+					<span class="glyphicon glyphicon-thumbs-up"></span>
+					<span *ngIf="feedData.likedBy">{{feedData.likedBy.length}}</span>
+				</div>
+
+				<div *ngFor="let names of feedData.likedBy">
+					<div class="row img-div-like">
+						<img class="image-content" src="assets/images/person.png"> {{names.name}}
 					</div>
 				</div>
-      
+
+				<div class="modal-footer">
+					<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+				</div>
 			</div>
+
 		</div>
 	</div>
+</div>
+
+
+<!-- Modal comment-->
+<div class="modal fade" id="commentModal" role="dialog">
+	<div class="modal-dialog">
+		<!-- Modal content-->
+		<div class="modal-content">
+			<div class="modal-body">
+				<div *ngFor="let names of feedData.commentBy">
+					<div class="row img-div-like">
+						<img class="image-content" src="assets/images/person.png" /> <span class="notification-name">{{names.name}}</span><br>
+						<span style="color: #a2a2c3;">
+							{{names.comment}}
+						</span>
+					</div>
+				</div>
+				<div>
+					<div class="input-group">
+						<input type="text" class="form-control" placeholder="comment...">
+						<span class="input-group-btn">
+							<button class="btn btn-primary" type="button">Post</button>
+						</span>
+					</div>					
+				</div>
+				<div class="modal-footer">
+					<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+				</div>
+			</div>
+
+		</div>
+	</div>
+</div>
+
+<!-- Modal Share-->
+<div class="modal fade" id="shareModal" role="dialog">
+	<div class="modal-dialog">
+		<!-- Modal content-->
+		<div class="modal-content">
+			<div class="modal-body">
+				<button type="button" class="btn btn-default cross-float row" data-dismiss="modal">X</button>
+				<div class="share-modal">
+					<span class="glyphicon glyphicon-share"></span><span class="share-post-now">Post Now</span><br>
+					<span class="glyphicon glyphicon-edit"></span><span class="share-post-now">Write Post</span><br>
+					<span class="glyphicon glyphicon-comment"></span><span class="share-post-now">Send as Message</span>
+				</div>
+				<div class="modal-footer">
+					<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+				</div>
+			</div>
+
+		</div>
+	</div>
+</div>
