@@ -1,17 +1,18 @@
 <header-nav></header-nav>
-<div>
-    <div class="friend-content" *ngFor="let req of frndRequests">
-        <div>
-            <img src="assets/images/person.png" alt="Person">
-        </div>
-        <div class="name-mutual-content">
-            <div >{{req.first}} {{req.last}}</div>
-            <div>{{req.mutualFriends}} Mututal Friends</div>
+<div class="row">
+    <div class="col-lg-9 col-md-9 border-right-page">
+        <div class="friend-content" *ngFor="let req of frndRequests">
             <div>
-                <button id="btn1" type="button" class="btn btn-primary">CONFIRM</button>
-                <button id="btn2" type="button" class="btn btn-default">DELETE</button>
+                <img src="assets/images/person.png" alt="Person">
+            </div>
+            <div class="name-mutual-content">
+                <div >{{req.first}} {{req.last}}</div>
+                <div>{{req.mutualFriends}} Mututal Friends</div>
+                <div>
+                    <button id="btn1" type="button" class="btn btn-primary">CONFIRM</button>
+                    <button id="btn2" type="button" class="btn btn-default">DELETE</button>
+                </div>
             </div>
         </div>
     </div>
-
 </div>

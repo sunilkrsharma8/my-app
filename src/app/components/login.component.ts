@@ -24,6 +24,8 @@ export class LoginComponent {
 
   sub() {
      // console.log("clicked",this.loginCreds, this.username, this.password);
+     
+     //console.log("error -- ", username.errors)
       var loginCreds = {
         'username' : '',
         'password' :''
