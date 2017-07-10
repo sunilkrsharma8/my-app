@@ -32,18 +32,21 @@
 				</span>
 				<span class="padding-left col-lg-4 col-md-4 col-sm-4">
 					<a href="" data-toggle="modal" data-target="#commentModal" (click)="setModelData(req)">
-						<span *ngIf="req.commentBy">{{req.commentBy.length}} <span class="glyphicon glyphicon-edit"></span></span>
+						<span class="glyphicon glyphicon-edit"></span>
+						<span *ngIf="req.commentBy">{{req.commentBy.length}} </span>
 					</a>
 				</span> 
 				<span class="padding-left col-lg-4 col-md-4 col-sm-4">	
 					<a href="" data-toggle="modal" data-target="#commentModal" (click)="setModelData(req)">
-						<span *ngIf="req.sharedBy">{{req.sharedBy.length}} <span class="glyphicon glyphicon-share"></span></span>
+						<span class="glyphicon glyphicon-share"></span>
+						<span *ngIf="req.sharedBy">{{req.sharedBy.length}} </span>
 					</a>
 				</span>
 			</div>
 
 			<div class="like-comment-share col-lg-12 col-md-12 col-sm-12">
-				<span class="col-lg-1 col-md-1 col-sm-4"><a (click)="clickedLike(req)">Like</a></span>
+				<span *ngIf="req.isLike; else likeElse" class="col-lg-1 col-md-1 col-sm-4"><a (click)="clickedUnLike(req)">Unlike</a></span>
+				<ng-template #likeElse> <span  class="col-lg-1 col-md-1 col-sm-4"><a (click)="clickedLike(req)">Like</a></span></ng-template>
 				<span class="col-lg-4 col-md-4 col-sm-4"><a data-toggle="modal" data-target="#commentModal" (click)="setModelData(req)">Comment</a></span>
 				<span class="col-lg-4 col-md-4 col-sm-4"><a data-toggle="modal" data-target="#shareModal">Share</a></span>
 			</div>
@@ -101,9 +104,9 @@
 				</div>
 				<div>
 					<div class="input-group">
-						<input type="text" class="form-control" placeholder="comment...">
+						<input type="text" id="post" [(ngModel)]="post"  class="form-control" placeholder="comment...">
 						<span class="input-group-btn">
-							<button class="btn btn-primary" type="button">Post</button>
+							<button class="btn btn-primary" (click)="postComment(feedData,post)" type="button">Post</button>
 						</span>
 					</div>					
 				</div>

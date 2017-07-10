@@ -8,13 +8,38 @@ import { FeedsData } from '../model/FeedsData';
 @Injectable()
 export class FeedsService {
 
-    private headers = new Headers({ 
+    private headers = new Headers({
         'Content-Type': 'application/json',
         'Predix-Zone-Id': '271abbf6-1918-471c-a676-9ff2bc08dcb6',
-        'Authorization': ' bearer eyJhbGciOiJSUzI1NiIsImtpZCI6ImxlZ2FjeS10b2tlbi1rZXkiLCJ0eXAiOiJKV1QifQ.eyJqdGkiOiIwN2JiZmVjODk3NWI0M2RjYTI0MTk1OTBiY2FkM2I4NCIsInN1YiI6ImNnLWNsaWVudDEiLCJzY29wZSI6WyJ1YWEubm9uZSIsInByZWRpeC1hc3NldC56b25lcy4yNzFhYmJmNi0xOTE4LTQ3MWMtYTY3Ni05ZmYyYmMwOGRjYjYudXNlciJdLCJjbGllbnRfaWQiOiJjZy1jbGllbnQxIiwiY2lkIjoiY2ctY2xpZW50MSIsImF6cCI6ImNnLWNsaWVudDEiLCJncmFudF90eXBlIjoiY2xpZW50X2NyZWRlbnRpYWxzIiwicmV2X3NpZyI6ImNmZjAxYWMwIiwiaWF0IjoxNDk5NDA2NDA4LCJleHAiOjE0OTk0NDk2MDgsImlzcyI6Imh0dHBzOi8vZDI2NGJhOWItYzg1NS00MDQxLTg1ZDQtODI3ZGI1NTQ4ODE3LnByZWRpeC11YWEucnVuLmF3cy11c3cwMi1wci5pY2UucHJlZGl4LmlvL29hdXRoL3Rva2VuIiwiemlkIjoiZDI2NGJhOWItYzg1NS00MDQxLTg1ZDQtODI3ZGI1NTQ4ODE3IiwiYXVkIjpbImNnLWNsaWVudDEiLCJwcmVkaXgtYXNzZXQuem9uZXMuMjcxYWJiZjYtMTkxOC00NzFjLWE2NzYtOWZmMmJjMDhkY2I2Il19.sL9bKzBn9SAcdpe3dbwCv_Quebf8-NT5PBFfJevFkuIg6M_n7SFkaD147hyuVKcegwBgIrld8V1wBEihgwNoTOE8Af49RggsK38M3qhXpj7N2N9uuUiC6nOb1GRlve16H2ySJ2xK2_2oSO2Bt4Zmi_AdHEpJzbmxPhKB7agTyb3PhrSjOlaL9j-QvTE_7-jfFt6rMWclKRjd34_VC-yEGBN5yA7ilQdg2KxWR6dM9pvni5GesCYZhaGmuuiNA8ghQDLF8Mtd7E97-Kxd-lhTwmfJdHN98__88LRaiEf9CpGPmdAhlJQhsfDBxBaD5u8BSYZ5MWk2MZu2x37i1OldEw'
+        'Authorization': ' bearer eyJhbGciOiJSUzI1NiIsImtpZCI6ImxlZ2FjeS10b2tlbi1rZXkiLCJ0eXAiOiJKV1QifQ.eyJqdGkiOiI1MzM4OWRhZmM5ZjY0OTA3ODRiOGVlMGMyMGFkYjVhMSIsInN1YiI6ImNnLWNsaWVudDEiLCJzY29wZSI6WyJ1YWEubm9uZSIsInByZWRpeC1hc3NldC56b25lcy4yNzFhYmJmNi0xOTE4LTQ3MWMtYTY3Ni05ZmYyYmMwOGRjYjYudXNlciIsInRpbWVzZXJpZXMuem9uZXMuYzRlMGYwMTYtODkxNS00ZTkyLWE3OTktODI2ZGExMDQxNmZjLnVzZXIiXSwiY2xpZW50X2lkIjoiY2ctY2xpZW50MSIsImNpZCI6ImNnLWNsaWVudDEiLCJhenAiOiJjZy1jbGllbnQxIiwiZ3JhbnRfdHlwZSI6ImNsaWVudF9jcmVkZW50aWFscyIsInJldl9zaWciOiJjZmYwMWFjMCIsImlhdCI6MTQ5OTY2NjA5MSwiZXhwIjoxNDk5NzA5MjkxLCJpc3MiOiJodHRwczovL2QyNjRiYTliLWM4NTUtNDA0MS04NWQ0LTgyN2RiNTU0ODgxNy5wcmVkaXgtdWFhLnJ1bi5hd3MtdXN3MDItcHIuaWNlLnByZWRpeC5pby9vYXV0aC90b2tlbiIsInppZCI6ImQyNjRiYTliLWM4NTUtNDA0MS04NWQ0LTgyN2RiNTU0ODgxNyIsImF1ZCI6WyJjZy1jbGllbnQxIiwicHJlZGl4LWFzc2V0LnpvbmVzLjI3MWFiYmY2LTE5MTgtNDcxYy1hNjc2LTlmZjJiYzA4ZGNiNiIsInRpbWVzZXJpZXMuem9uZXMuYzRlMGYwMTYtODkxNS00ZTkyLWE3OTktODI2ZGExMDQxNmZjIl19.TUjFLPnKMkXC-F3kU0eD-D9cj2vtv4DPUZdUOyqNy35TeQpcne78N4W9wrvcWXEj1qMkFBGKFCqAmMEGe0tPjRu5_9DnaLkcbXBbH70Xroby6bmWhRFVro4AAmUujFFH9dJgZaQjG92d0vxUajSI5WPU3Ziwbr8Um2Yanit3wwRl6oi_OxBKyDnacIZsSzPvrPG1rbcdJOn1A6yOkPMr6OVMddnefBWx-175D3-jXL9YOpcyNG0CaHh3fEQ4z81a5-IQUdQgFKJEAxt5ejr84Y2Q7UP6Zb8oOejqOSlmhtxKYSJjzokIyf_QTVTGeM3ChUmmXMRgtipL3edb4xVa7A'
     });
     private getEmpUrl = 'https://predix-asset.run.aws-usw02-pr.ice.predix.io/AssetDataVal';  // URL to web api
 
+    private getPatchUrl = 'https://predix-asset.run.aws-usw02-pr.ice.predix.io';  // URL to web api
+
+
+    private patchLikeBody = [{
+        "op": "add",
+        "path": "/likedBy/",
+        "value": {
+            "id": "62",
+            "name": "Sunil",
+            "likedOn": "2011-07-10 00:00:01"
+        }
+    }];
+
+   getpatchUnLikeBody(index:Number) :any {
+      return [{
+        "op": "remove",
+        "path": "/likedBy/"+index
+        
+    }];   
+   };
+    private patchUnLikeBody = [{
+        "op": "remove",
+        "path": "/likedBy/"
+        
+    }];   
 
     constructor(private http: Http) { }
 
@@ -26,10 +51,46 @@ export class FeedsService {
 
     }
 
-    likeClicked() : Promise <FeedsData[]> {
-        return this.http.patch(this.getEmpUrl, { headers: this.headers })
+    likeClicked(id: String): Promise<FeedsData[]> {
+        const url = `${this.getPatchUrl}${id}`;
+        return this.http.patch(url, JSON.stringify(this.patchLikeBody), { headers: this.headers })
             .toPromise()
-            .then(response => response.json() as FeedsData[])
+            .then((response) => {
+                console.log(response);
+                response => response.json().likedBy as FeedsData[]
+            })
+            .catch(this.handleError);
+    }
+
+    unLikeClicked(req: FeedsData): Promise<FeedsData[]> {
+         const  index = req.likedBy.findIndex(x => x['id']=="62");
+        const url = `${this.getPatchUrl}${req.uri}`;
+        return this.http.patch(url, JSON.stringify(this.getpatchUnLikeBody(index)), { headers: this.headers })
+            .toPromise()
+            .then((response) => {
+                console.log(response);
+                response => response.json().likedBy as FeedsData[]
+            })
+            .catch(this.handleError);
+    }
+
+    commentPost(id: String, post: String): Promise<FeedsData[]> {
+        const url = `${this.getPatchUrl}${id}`;
+        return this.http.patch(url, JSON.stringify([{
+                                            "op": "add",
+                                            "path": "/commentBy/",
+                                            "value": {
+                                                "id": "62",
+                                                "name": "Sunil",
+                                                "sharedOn": "2011-07-10 00:00:01",
+                                                "comment": post
+                                            }
+                                        }]), { headers: this.headers })
+            .toPromise()
+            .then((response) => {
+                console.log(response);
+                response => response.json().commentBy as FeedsData[]
+            })
             .catch(this.handleError);
     }
 

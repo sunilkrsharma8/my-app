@@ -1,14 +1,16 @@
 export class FeedsData {
+  id:String;
   uri: string ;
-  AssetId: string ;
-  AssetName: string ;
-  AssetLocation: string ;
-  Project: string ;
-  Industry: string ;
-  Department: string ;
-  ProjectRef: string ;
-  CreatedBy: string ;
-  CreatedOn: string ;
-  SharedBy: string ;
-  LikedBy: string ;
+  assetId: string ;
+  assetName: string ;
+  assetLocation: string ;
+  project: string ;
+  industry: string ;
+  department: string ;
+  projectRef: string ;
+  createdBy: string ;
+  createdOn: string ;
+  sharedBy: Array<String>;
+  likedBy: Array<String>;
+  commentBy:Array<String>;
 }
