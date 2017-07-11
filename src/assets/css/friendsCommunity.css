@@ -177,3 +177,7 @@ span{
 .only-for-mobile-view>div>span>a {
 	color: white;
 }
+
+.top-padding{
+	    padding-top: 15%;
+}

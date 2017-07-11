@@ -2,6 +2,9 @@ import { Component } from '@angular/core';
 import { FeedsData } from '../model/feedsData';
 import { FeedsService } from '../services/feeds.service';
 
+import { User } from '../model/user';
+import { UserService } from '../services/index';
+
 @Component({
   selector: 'feed',
   templateUrl: './../partials/feed.component.html',
@@ -11,9 +14,11 @@ export class FeedComponent {
 
   feedsData: FeedsData[];
   feedData = FeedsData;
+  users: User[] = [];
 
   constructor(
-    private feedsService: FeedsService
+    private feedsService: FeedsService,
+    private userService: UserService
   ) { }
 
   public setModelData = (req) => {
