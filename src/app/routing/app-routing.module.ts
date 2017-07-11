@@ -6,7 +6,8 @@ import { FeedComponent } from '../components/feed.component';
 import { FriendRequestComponent } from '../components/friendRequest.component';
 import { LoginComponent } from '../components/login.component';
 import { AppComponent } from '../components/app.component';
-import {PageNotFoundComponent} from '../components/pageNotFound.component'
+import {PageNotFoundComponent} from '../components/pageNotFound.component';
+import { AuthGuard } from '../_guards/index';
 
 
 
@@ -23,19 +24,23 @@ const routes: Routes = [
 	},
 	{
 		path: 'home',
-		component: HomeComponent
+		component: HomeComponent,
+		canActivate: [AuthGuard]
 	},
     {
 		path: 'feed',
-		component: FeedComponent
+		component: FeedComponent,
+		canActivate: [AuthGuard]
 	},
     {
 		path: 'friendRequest',
-		component: FriendRequestComponent
+		component: FriendRequestComponent,
+		canActivate: [AuthGuard]
 	},
     {
 		path: 'notification',
-		component: NotificationComponent
+		component: NotificationComponent,
+		canActivate: [AuthGuard]
 	},
 	{
 		path: '',

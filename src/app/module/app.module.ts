@@ -11,7 +11,9 @@ import { FeedComponent } from '../components/feed.component';
 import { FriendRequestComponent } from '../components/friendRequest.component';
 import { AppRoutingModule } from '../routing/app-routing.module';
 import { FriendReqService } from '../services/friendRequest.service';
-import { PageNotFoundComponent } from '../components/pageNotFound.component'
+import { PageNotFoundComponent } from '../components/pageNotFound.component';
+import { AuthGuard } from '../_guards/index';
+import { AuthenticationService, UserService } from '../services/index';
 
 @NgModule({
   declarations: [
@@ -25,12 +27,19 @@ import { PageNotFoundComponent } from '../components/pageNotFound.component'
     PageNotFoundComponent
   ],
   imports: [
-    BrowserModule,
     AppRoutingModule,
+    BrowserModule,
     FormsModule,
     HttpModule
   ],
-  providers: [FriendReqService],
+   providers: [
+        FriendReqService,
+        AuthGuard,
+        AuthenticationService,
+        UserService,
+    ],
+
+
   bootstrap: [AppComponent],
   schemas: [ CUSTOM_ELEMENTS_SCHEMA ]
 })

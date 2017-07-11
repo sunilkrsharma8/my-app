@@ -3,7 +3,7 @@ import { Headers, Http } from '@angular/http';
 
 import 'rxjs/add/operator/toPromise';
 
-import { LoginData } from '../model/loginData';
+import { User } from '../model/user';
 
 @Injectable()
 export class LoginService {
@@ -19,10 +19,10 @@ export class LoginService {
 
     constructor(private http: Http) { }
 
-    login(userdata): Promise<LoginData[]> {
+    login(userdata): Promise<User[]> {
         return this.http.post(this.loginUrl, { headers: this.headers, data : userdata })
             .toPromise()
-            .then(response => response.json() as LoginData[])
+            .then(response => response.json() as User[])
             .catch(this.handleError);
 
     }

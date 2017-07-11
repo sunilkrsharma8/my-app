@@ -192,11 +192,12 @@ padding-bottom: 700px;
 .only-for-mobile-view>div>span>a {
 	color: white;
 }
-
 .modal-body {
     max-height: calc(100vh - 210px);
     overflow-y: auto;
 }
 
-
+.top-padding{
+	    padding-top: 15%;
+}
 
