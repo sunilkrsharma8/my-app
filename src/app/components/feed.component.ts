@@ -11,6 +11,7 @@ export class FeedComponent {
 
   feedsData: FeedsData[];
   feedData = FeedsData;
+  post :string;
 
   constructor(
     private feedsService: FeedsService
@@ -38,6 +39,14 @@ export class FeedComponent {
       });
   }
 
+ getParticularRecord(uri): void {
+    this.feedsService
+      .getParticularRecord(uri)
+      .then((Request) => {
+        this.feedData = Request[0];
+      });
+  }
+
   ngOnInit(): void {
     this.getAllFriendReq();
 
@@ -47,7 +56,7 @@ export class FeedComponent {
     this.feedsService
       .likeClicked(req.uri)
       .then(Requests => this.feedsData = Requests);
-    this.getAllFriendReq();
+     this.getAllFriendReq();
   }
 
   public clickedUnLike(req: FeedsData): void {
@@ -61,6 +70,11 @@ export class FeedComponent {
     this.feedsService
       .commentPost(req.uri,post)
       .then(Requests => this.feedsData = Requests);
+      this.post = "";
+      console.log("checking req -- ", req);
+      this.getParticularRecord(req.uri);
+      this.getAllFriendReq();
+      
   }
 
 }

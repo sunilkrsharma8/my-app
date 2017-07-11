@@ -11,7 +11,7 @@ export class FeedsService {
     private headers = new Headers({
         'Content-Type': 'application/json',
         'Predix-Zone-Id': '271abbf6-1918-471c-a676-9ff2bc08dcb6',
-        'Authorization': ' bearer eyJhbGciOiJSUzI1NiIsImtpZCI6ImxlZ2FjeS10b2tlbi1rZXkiLCJ0eXAiOiJKV1QifQ.eyJqdGkiOiI1MzM4OWRhZmM5ZjY0OTA3ODRiOGVlMGMyMGFkYjVhMSIsInN1YiI6ImNnLWNsaWVudDEiLCJzY29wZSI6WyJ1YWEubm9uZSIsInByZWRpeC1hc3NldC56b25lcy4yNzFhYmJmNi0xOTE4LTQ3MWMtYTY3Ni05ZmYyYmMwOGRjYjYudXNlciIsInRpbWVzZXJpZXMuem9uZXMuYzRlMGYwMTYtODkxNS00ZTkyLWE3OTktODI2ZGExMDQxNmZjLnVzZXIiXSwiY2xpZW50X2lkIjoiY2ctY2xpZW50MSIsImNpZCI6ImNnLWNsaWVudDEiLCJhenAiOiJjZy1jbGllbnQxIiwiZ3JhbnRfdHlwZSI6ImNsaWVudF9jcmVkZW50aWFscyIsInJldl9zaWciOiJjZmYwMWFjMCIsImlhdCI6MTQ5OTY2NjA5MSwiZXhwIjoxNDk5NzA5MjkxLCJpc3MiOiJodHRwczovL2QyNjRiYTliLWM4NTUtNDA0MS04NWQ0LTgyN2RiNTU0ODgxNy5wcmVkaXgtdWFhLnJ1bi5hd3MtdXN3MDItcHIuaWNlLnByZWRpeC5pby9vYXV0aC90b2tlbiIsInppZCI6ImQyNjRiYTliLWM4NTUtNDA0MS04NWQ0LTgyN2RiNTU0ODgxNyIsImF1ZCI6WyJjZy1jbGllbnQxIiwicHJlZGl4LWFzc2V0LnpvbmVzLjI3MWFiYmY2LTE5MTgtNDcxYy1hNjc2LTlmZjJiYzA4ZGNiNiIsInRpbWVzZXJpZXMuem9uZXMuYzRlMGYwMTYtODkxNS00ZTkyLWE3OTktODI2ZGExMDQxNmZjIl19.TUjFLPnKMkXC-F3kU0eD-D9cj2vtv4DPUZdUOyqNy35TeQpcne78N4W9wrvcWXEj1qMkFBGKFCqAmMEGe0tPjRu5_9DnaLkcbXBbH70Xroby6bmWhRFVro4AAmUujFFH9dJgZaQjG92d0vxUajSI5WPU3Ziwbr8Um2Yanit3wwRl6oi_OxBKyDnacIZsSzPvrPG1rbcdJOn1A6yOkPMr6OVMddnefBWx-175D3-jXL9YOpcyNG0CaHh3fEQ4z81a5-IQUdQgFKJEAxt5ejr84Y2Q7UP6Zb8oOejqOSlmhtxKYSJjzokIyf_QTVTGeM3ChUmmXMRgtipL3edb4xVa7A'
+        'Authorization': ' bearer eyJhbGciOiJSUzI1NiIsImtpZCI6ImxlZ2FjeS10b2tlbi1rZXkiLCJ0eXAiOiJKV1QifQ.eyJqdGkiOiI3YmZiNzgxNjY3NTA0NWQxOTUxNWQ0M2RiM2IwYWFmNyIsInN1YiI6ImNnLWNsaWVudDEiLCJzY29wZSI6WyJ1YWEubm9uZSIsInByZWRpeC1hc3NldC56b25lcy4yNzFhYmJmNi0xOTE4LTQ3MWMtYTY3Ni05ZmYyYmMwOGRjYjYudXNlciIsInRpbWVzZXJpZXMuem9uZXMuYzRlMGYwMTYtODkxNS00ZTkyLWE3OTktODI2ZGExMDQxNmZjLnVzZXIiXSwiY2xpZW50X2lkIjoiY2ctY2xpZW50MSIsImNpZCI6ImNnLWNsaWVudDEiLCJhenAiOiJjZy1jbGllbnQxIiwiZ3JhbnRfdHlwZSI6ImNsaWVudF9jcmVkZW50aWFscyIsInJldl9zaWciOiJjZmYwMWFjMCIsImlhdCI6MTQ5OTc1MTMzNCwiZXhwIjoxNDk5Nzk0NTM0LCJpc3MiOiJodHRwczovL2QyNjRiYTliLWM4NTUtNDA0MS04NWQ0LTgyN2RiNTU0ODgxNy5wcmVkaXgtdWFhLnJ1bi5hd3MtdXN3MDItcHIuaWNlLnByZWRpeC5pby9vYXV0aC90b2tlbiIsInppZCI6ImQyNjRiYTliLWM4NTUtNDA0MS04NWQ0LTgyN2RiNTU0ODgxNyIsImF1ZCI6WyJjZy1jbGllbnQxIiwicHJlZGl4LWFzc2V0LnpvbmVzLjI3MWFiYmY2LTE5MTgtNDcxYy1hNjc2LTlmZjJiYzA4ZGNiNiIsInRpbWVzZXJpZXMuem9uZXMuYzRlMGYwMTYtODkxNS00ZTkyLWE3OTktODI2ZGExMDQxNmZjIl19.eYPgIWUlL2bCmnE12495t8F8PIkBptQDAc2X5Vv9l1dz49LPsUajObduZjogQ2LWxjMks2bMcA8VTZZjw1SYVA3mKrUbZ8MBkdg5lsZ-gicVP2o77TkUY1CirJLt0FguHL0GZJEcvvIuJiu-pGdnwWTPqDNb0z2HLwwU6g2JdeuzkRP22ODIPlGYJkxVOMeN-UMLKVKMRhBMiLhZFqNOdLXsbpVdgDPcfAIsWHXtWSLKsusVS64UxkCpPDY6f7P0KZTpuI3oQbFTT_Fkml0gLNoQzoChSm-PxdUXErtqSr-x9KioKzpb79kt_J_DFnzRI3HZ7uEaI5wUQQ8vnmVE8w'
     });
     private getEmpUrl = 'https://predix-asset.run.aws-usw02-pr.ice.predix.io/AssetDataVal';  // URL to web api
 
@@ -50,7 +50,12 @@ export class FeedsService {
             .catch(this.handleError);
 
     }
-
+    getParticularRecord(id): Promise<FeedsData> {
+        return this.http.get(this.getPatchUrl+id, { headers: this.headers })
+            .toPromise()
+            .then(response => response.json() as FeedsData)
+            .catch(this.handleError);
+    }
     likeClicked(id: String): Promise<FeedsData[]> {
         const url = `${this.getPatchUrl}${id}`;
         return this.http.patch(url, JSON.stringify(this.patchLikeBody), { headers: this.headers })

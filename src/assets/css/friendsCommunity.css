@@ -98,6 +98,20 @@ span{
 
 .border-right-page {
 	border-right: #a2a2c3 1px solid;
+	border-left: #a2a2c3 1px solid;
+	padding-left: 0px;
+}
+
+.border-right-page-height {
+	padding-bottom: 570px;
+}
+
+.border-right-page-height-frnd {
+padding-bottom: 700px;
+}
+
+.padding-left-create {
+	padding-left: 80px;
 }
 
 .like-comment-share {
@@ -108,7 +122,7 @@ span{
 
 .feed-content {
 	padding-top: 20px;
-	padding-left: 20px;
+	padding-left: 15px;
 }
 
 .liked-modal-count {
@@ -127,7 +141,7 @@ span{
 }
 
 .padding-left {
-	padding-left: 31px;
+	padding-left: 15px;
 }
 .image-content {
 	width: 50px;
@@ -151,10 +165,11 @@ span{
 
 .cross-float {
 	float: right;
+	margin-top: -10px;
 }
 
-.padding-right-cross {
-	padding-right: 20px;
+.padding-bottom-modal-header {
+	 padding-bottom: 5px;
 }
 
 #pageNotFound {
@@ -177,3 +192,11 @@ span{
 .only-for-mobile-view>div>span>a {
 	color: white;
 }
+
+.modal-body {
+    max-height: calc(100vh - 210px);
+    overflow-y: auto;
+}
+
+
+
