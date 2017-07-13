@@ -5,5 +5,12 @@ import { Component } from '@angular/core';
   templateUrl: './../partials/home.component.html'
 })
 export class HomeComponent {
- 
+
+    private date;
+
+    constructor() { 
+      this.date = new Date();  
+    }
+
+    
 }
