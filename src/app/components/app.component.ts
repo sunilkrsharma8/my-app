@@ -6,6 +6,5 @@ import { MainComponent } from './header-nav.component';
   templateUrl: './../partials/app.component.html'
 })
 export class AppComponent {
- 
-
+  
 }

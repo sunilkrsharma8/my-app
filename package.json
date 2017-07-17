@@ -7,14 +7,14 @@
     "build": "ng build",
     "lint": "ng lint",
     "e2e": "ng e2e",
-    "start": "tsc && concurrently \"tsc -w\" \"lite-server\" ",
-    "lite": "lite-server",
-    "postinstall": "typings install",
-    "test": "tsc && concurrently \"tsc -w\" \"karma start karma.conf.js\"",
-    "test-once": "tsc && karma start karma.conf.js --single-run",
+    "start": "concurrently \"npm run tsc:w\" \"npm run lite\" ",
     "tsc": "tsc",
     "tsc:w": "tsc -w",
-    "typings": "typings"
+    "lite": "lite-server",
+    "typings": "typings",
+    "postinstall": "typings install",
+    "remap-istanbul": "remap-istanbul -i ./report/coverage/coverage-final.json -o ./report/coverage/html-report -t html",
+    "test": "npm run tsc && karma start && npm run remap-istanbul"
   },
   "private": true,
   "dependencies": {
@@ -29,10 +29,19 @@
     "@angular/router": "^4.0.0",
     "concurrently": "^3.5.0",
     "core-js": "^2.4.1",
+    "jasmine-core": "^2.6.4",
+    "karma": "^1.7.0",
+    "karma-chrome-launcher": "^2.1.1",
     "karma-coverage": "^1.1.1",
+    "karma-jasmine": "^1.1.0",
     "karma-remap-istanbul": "^0.6.0",
+    "karma-sourcemap-loader": "^0.3.7",
     "karma-webpack": "^2.0.4",
+    "lite-server": "^2.3.0",
+    "remap-istanbul": "^0.9.5",
     "rxjs": "^5.1.0",
+    "typescript": "^2.3.4",
+    "typings": "^2.1.1",
     "zone.js": "^0.8.4"
   },
   "devDependencies": {
@@ -42,6 +51,9 @@
     "@types/jasmine": "2.5.45",
     "@types/node": "~6.0.60",
     "codelyzer": "~3.0.1",
+    "concurrently": "^3.0.0",
+    "gulp": "3.9.1",
+    "gulp-typescript": "3.0.2",
     "jasmine-core": "~2.6.2",
     "jasmine-spec-reporter": "~4.1.0",
     "karma": "~1.7.0",
@@ -50,13 +62,12 @@
     "karma-coverage-istanbul-reporter": "^1.2.1",
     "karma-jasmine": "~1.1.0",
     "karma-jasmine-html-reporter": "^0.2.2",
+    "karma-remap-coverage": "^0.1.4",
+    "karma-spec-reporter": "0.0.31",
+    "lodash": "^4.16.2",
     "protractor": "~5.1.2",
     "ts-node": "~3.0.4",
     "tslint": "~5.3.2",
-    "typescript": "~2.3.3",
-    "lodash": "^4.16.2",
-    "gulp": "3.9.1",
-    "gulp-typescript": "3.0.2",
-    "concurrently": "^3.0.0"
+    "typescript": "~2.3.3"
   }
 }

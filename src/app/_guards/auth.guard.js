@@ -16,7 +16,7 @@ var AuthGuard = (function () {
         this.router = router;
     }
     AuthGuard.prototype.canActivate = function () {
-        if (localStorage.getItem('currentUser')) {
+        if (sessionStorage.getItem('currentUser')) {
             // logged in so return true
             return true;
         }
@@ -24,11 +24,11 @@ var AuthGuard = (function () {
         this.router.navigate(['/login']);
         return false;
     };
-    AuthGuard = __decorate([
-        core_1.Injectable(),
-        __metadata("design:paramtypes", [router_1.Router])
-    ], AuthGuard);
     return AuthGuard;
 }());
+AuthGuard = __decorate([
+    core_1.Injectable(),
+    __metadata("design:paramtypes", [router_1.Router])
+], AuthGuard);
 exports.AuthGuard = AuthGuard;
 //# sourceMappingURL=auth.guard.js.map
