@@ -4,14 +4,17 @@ import { Headers, Http } from '@angular/http';
 import 'rxjs/add/operator/toPromise';
 
 import { FeedsData } from '../model/FeedsData';
+import { AuthenticationService } from './authentication.service';
 
 @Injectable()
 export class FeedsService {
 
+    constructor(private http: Http, private authenticationService: AuthenticationService) { }
+
     private headers = new Headers({
         'Content-Type': 'application/json',
-        'Predix-Zone-Id': '271abbf6-1918-471c-a676-9ff2bc08dcb6',
-        'Authorization': ' bearer eyJhbGciOiJSUzI1NiIsImtpZCI6ImxlZ2FjeS10b2tlbi1rZXkiLCJ0eXAiOiJKV1QifQ.eyJqdGkiOiIyMTc3NDUyMmVhNmE0MjlhYmUzNjY0OTdhMzJjZjgxYyIsInN1YiI6ImNnLWNsaWVudDEiLCJzY29wZSI6WyJ1YWEubm9uZSIsInRpbWVzZXJpZXMuem9uZXMuODQyNzZkYjMtYjFiNC00ZWI4LWIzODAtMzc0NGIzZDBlNWQ2LnF1ZXJ5IiwicHJlZGl4LWFzc2V0LnpvbmVzLjI3MWFiYmY2LTE5MTgtNDcxYy1hNjc2LTlmZjJiYzA4ZGNiNi51c2VyIiwidGltZXNlcmllcy56b25lcy5jNGUwZjAxNi04OTE1LTRlOTItYTc5OS04MjZkYTEwNDE2ZmMudXNlciJdLCJjbGllbnRfaWQiOiJjZy1jbGllbnQxIiwiY2lkIjoiY2ctY2xpZW50MSIsImF6cCI6ImNnLWNsaWVudDEiLCJncmFudF90eXBlIjoiY2xpZW50X2NyZWRlbnRpYWxzIiwicmV2X3NpZyI6ImNmZjAxYWMwIiwiaWF0IjoxNDk5ODMzMTQwLCJleHAiOjE0OTk4NzYzNDAsImlzcyI6Imh0dHBzOi8vZDI2NGJhOWItYzg1NS00MDQxLTg1ZDQtODI3ZGI1NTQ4ODE3LnByZWRpeC11YWEucnVuLmF3cy11c3cwMi1wci5pY2UucHJlZGl4LmlvL29hdXRoL3Rva2VuIiwiemlkIjoiZDI2NGJhOWItYzg1NS00MDQxLTg1ZDQtODI3ZGI1NTQ4ODE3IiwiYXVkIjpbInRpbWVzZXJpZXMuem9uZXMuODQyNzZkYjMtYjFiNC00ZWI4LWIzODAtMzc0NGIzZDBlNWQ2IiwiY2ctY2xpZW50MSIsInByZWRpeC1hc3NldC56b25lcy4yNzFhYmJmNi0xOTE4LTQ3MWMtYTY3Ni05ZmYyYmMwOGRjYjYiLCJ0aW1lc2VyaWVzLnpvbmVzLmM0ZTBmMDE2LTg5MTUtNGU5Mi1hNzk5LTgyNmRhMTA0MTZmYyJdfQ.QY3hLtIeXAD8DNK3hsok0u3x982z5NJIdSocWqNQxpzZnz21tlX-TH2-pm66qWI8dofmpG5msF3tJZHDXwUV9DVZ9GiqdKvseKIcLfgd8aVen62s96RKLFXGu6UnKhe3rtiDKuqRsw1a3rzg8lVa_5QEqh0U26EvASlVatb7m_T9fBm6OmxdwiM3WvuwDmmQwCe8hze1uQwlANK6t9fIXnnODTKyq9alBZ-abX7Q7OEYo8vVC198utvDIPdXr9n7T9bojAfjWp8eil3HHEwPVfNbISehYD_tebFpzloy3y55KvYaqtWEEBVJ5qLcMIYGHsPfqN0faDTaUrSV14HS-w'
+        'Predix-Zone-Id': this.authenticationService.predixZone,
+        'Authorization': ' bearer ' + this.authenticationService.token
     });
     private getEmpUrl = 'https://predix-asset.run.aws-usw02-pr.ice.predix.io/AssetDataVal';  // URL to web api
 
@@ -43,8 +46,7 @@ export class FeedsService {
         
     }];   
 
-    constructor(private http: Http) { }
-
+   
     getFeeds(): Promise<FeedsData[]> {
         return this.http.get(this.getEmpUrl, { headers: this.headers })
             .toPromise()
@@ -103,7 +105,7 @@ export class FeedsService {
 
 
     private handleError(error: any): Promise<any> {
-        console.error('An error occurred', error); // for demo purposes only
+        console.error('An error occurred', error); 
         return Promise.reject(error.message || error);
     }
 

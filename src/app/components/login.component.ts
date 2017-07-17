@@ -23,7 +23,7 @@ export class LoginComponent implements OnInit {
     }
 
     login() {
-        this.authenticationService.login(this.model.username, this.model.password)
+            this.authenticationService.login(this.model.username, this.model.password)
             .subscribe(result => {
                 if (result === true) {
                     this.router.navigate(['/feed']);
@@ -31,5 +31,7 @@ export class LoginComponent implements OnInit {
                     this.error = 'Username or password is incorrect';
                 }
             });
-    }
+            
+  }
+
 }
