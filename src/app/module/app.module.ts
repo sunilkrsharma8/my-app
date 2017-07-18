@@ -1,7 +1,7 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule,  CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { FormsModule }   from '@angular/forms';
-import { HttpModule }    from '@angular/http';
+import { HttpModule ,Http, RequestOptions}    from '@angular/http';
 import { AppComponent } from './../components/app.component';
 import { MainComponent } from './../components/header-nav.component';
 import { LoginComponent } from '../components/login.component';
@@ -36,7 +36,7 @@ import { AuthenticationService, UserService } from '../services/index';
         FriendReqService,
         AuthGuard,
         AuthenticationService,
-        UserService,
+        UserService
     ],
 
 

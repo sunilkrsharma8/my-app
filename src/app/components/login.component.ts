@@ -11,12 +11,13 @@ import { AuthenticationService } from '../services/authentication.service';
 
 export class LoginComponent implements OnInit {
     model: any = {};
-    error = '';
+    error = ''; 
 
     constructor(
         private router: Router,
-        private authenticationService: AuthenticationService
-    ) { }
+        private authenticationService: AuthenticationService,
+        
+    ) {}
 
     ngOnInit() {
         // reset login status
@@ -24,15 +25,25 @@ export class LoginComponent implements OnInit {
     }
 
     login() {
-         this.authenticationService.login(this.model.username, this.model.password)
+            var self = this;
+            this.authenticationService.login(this.model.username, this.model.password)
              .subscribe(result => {
                  if (result === true) {
-                     this.router.navigate(['/feed']);
+                    
+                         this.authenticationService.setClientToken().subscribe(result=> {
+                          this.router.navigate(['/feed']);
+                         });
+                    
+                     
                  } else {
                      this.error = 'Username or password is incorrect';
                  }
-             });
+             },err=>{
+                  self.error = JSON.parse(err._body).error_description;
+            });
+        
     }
-
-
 }
+
+
+ 
