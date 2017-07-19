@@ -43,6 +43,12 @@ export class LoginComponent implements OnInit {
             });
         
     }
+
+    onKeyPress(event: any) {
+         this.error = '';
+        console.log(event.target.value);
+    };
+
 }
 
 
