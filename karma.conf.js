@@ -10,19 +10,39 @@ module.exports = function (config) {
       require('karma-chrome-launcher'),
       require('karma-jasmine-html-reporter'),
       require('karma-coverage-istanbul-reporter'),
-      require('@angular/cli/plugins/karma')
+      require('@angular/cli/plugins/karma'),
+      require('karma-webpack'),
+      require('karma-coverage'),
+      require('karma-remap-istanbul'),
+      require('karma-sourcemap-loader'),
+      require('karma-spec-reporter'),
+      require('karma-remap-coverage')
     ],
-    client:{
+    files: [
+      '../app/**/*.ts',
+      '../tests/*.ts'
+    ],
+
+    client: {
       clearContext: false // leave Jasmine Spec Runner output visible in browser
     },
-    coverageIstanbulReporter: {
-      reports: [ 'html', 'lcovonly' ],
-      fixWebpackSourcePaths: true
-    },
+
     angularCli: {
       environment: 'dev'
     },
-    reporters: ['progress', 'kjhtml'],
+
+    reporters: ['progress', 'kjhtml', 'coverage', 'remap-coverage'],
+
+
+    preprocessors: {
+      'app/**/!(*.spec).ts': ['coverage', 'sourcemap']
+    },
+
+    remapIstanbulReporter: {
+      reports: {
+        html: 'coverage',
+      }
+    },
     port: 9876,
     colors: true,
     logLevel: config.LOG_INFO,

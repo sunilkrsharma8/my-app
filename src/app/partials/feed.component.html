@@ -1,46 +1,59 @@
 <header-nav></header-nav>
-<div class="feed-content" *ngFor="let req of feedsData">
-	<div class="row">
-		<div class="col-lg-12">
-			<div>
-				<img src="assets/images/person.png" alt="Person">
+<div class="row" *ngFor="let req of feedsData">
+	<div class="col-lg-2 col-md-2"></div>
+	<div class="col-lg-7 col-md-7 border-right-page">
+		<div class="feed-content">
+			<div class="row">
+				<div class="col-lg-12 col-md-12 col-sm-12">
+					<div>
+						<img src="assets/images/motor.jpg" alt="Person">
+					</div>
+					<div>
+						<span>Project : {{req.assetFieldDiaplay.project}} </span> <br>
+						<span>Industry : {{req.assetFieldDiaplay.industry}} </span> <br>
+						<span>CreatedBy : {{req.createdBy.name}} </span>
+
+					</div>
+				</div>
 			</div>
 
-			<div>
-				<div>
-					<span>AssetName : {{req.assetName}} </span> <br>
-					<span>AssetLocation : {{req.assetLocation}} </span> <br>
-					<span>Project : {{req.project}} </span> <br>
-					<span>Industry : {{req.industry}} </span> <br>
-					<span>Department : {{req.department}} </span> <br>
-					<span>ProjectRef : {{req.projectRef}} </span> <br>
-					<span>CreatedBy : {{req.createdBy.name}} </span>
-
-				</div>
-				<div class="like-comment-content">
-					<a href="" data-toggle="modal" data-target="#likeModal" (click)="setModelData(req)">
-						<span class="glyphicon glyphicon-thumbs-up"></span>
-						<span *ngIf="req.likedBy">{{req.likedBy.length}}</span> 
-
-					</a>
-					<div class="like-comment-spacing">
-						<a href="" data-toggle="modal" data-target="#commentModal" (click)="setModelData(req)">
-							<span class="padding-right" *ngIf="req.commentBy">{{req.commentBy.length}} Comments</span> 
-							<span *ngIf="req.sharedBy">{{req.sharedBy.length}} Share</span>
+			<div class="col-lg-12 col-md-12 col-sm-12 padding-left-zero">
+				<span>AssetName : {{req.assetFieldDiaplay.assetName}} </span> <br>
+				<span>AssetLocation : {{req.assetFieldDiaplay.assetLocation}} </span> <br>
+			</div>
+			<div class="row">
+				<div  class="col-lg-12 col-md-12 col-sm-12">
+					<span class="col-lg-2 col-md-2 col-sm-4">
+						<a href="" data-toggle="modal" data-target="#likeModal" (click)="setModelData(req)">
+							<span class="glyphicon glyphicon-thumbs-up"></span>
+							<span *ngIf="req.likedBy">{{req.likedBy.length}}</span>
 						</a>
-					</div>
+					</span>
+					<span class="padding-left col-lg-5 col-md-5 col-sm-4">
+						<a href="" data-toggle="modal" data-target="#commentModal" (click)="setModelData(req)">
+							<span class="glyphicon glyphicon-edit"></span>
+							<span *ngIf="req.commentBy">{{req.commentBy.length}} </span>
+						</a>
+					</span> 
+					<span class="padding-left col-lg-5 col-md-5 col-sm-4">	
+						<a href="" data-toggle="modal" data-target="#commentModal" (click)="setModelData(req)">
+							<span class="glyphicon glyphicon-share"></span>
+							<span *ngIf="req.sharedBy">{{req.sharedBy.length}} </span>
+						</a>
+					</span>
+				</div>
 
+				<div class="like-comment-share col-lg-12 col-md-12 col-sm-12">
+					<span *ngIf="req.isLike; else likeElse" class="col-lg-2 col-md-2 col-sm-4"><a (click)="clickedUnLike(req)">Unlike</a></span>
+					<ng-template #likeElse> <span  class="col-lg-2 col-md-2 col-sm-4"><a (click)="clickedLike(req)">Like</a></span></ng-template>
+					<span class="col-lg-5 col-md-5 col-sm-4"><a data-toggle="modal" data-target="#commentModal" (click)="setModelData(req)">Reply</a></span>
+					<span class="col-lg-5 col-md-5 col-sm-4"><a data-toggle="modal" data-target="#shareModal">Share</a></span>
 				</div>
 			</div>
 		</div>
 	</div>
-	<div class="like-comment-share col-lg-12 col-md-12 col-sm-12">
-		<span class="col-lg-4 col-md-4 col-sm-4"><a (click)="clickedLike(req)">Like</a></span>
-		<span class="col-lg-4 col-md-4 col-sm-4"><a data-toggle="modal" data-target="#commentModal" (click)="setModelData(req)">Comment</a></span>
-		<span class="col-lg-4 col-md-4 col-sm-4"><a data-toggle="modal" data-target="#shareModal">Share</a></span>
-	</div>
+	<div class="col-lg-2 col-md-2"></div>
 </div>
-
 
 <!-- Modal Like-->
 <div class="modal fade" id="likeModal" role="dialog">
@@ -48,57 +61,38 @@
 
 		<!-- Modal content-->
 		<div class="modal-content">
-			<div class="modal-body">
-				<div class="liked-modal-count">
+			<div class="modal-header padding-bottom-modal-header">
+                <div>
 					<span class="glyphicon glyphicon-thumbs-up"></span>
 					<span *ngIf="feedData.likedBy">{{feedData.likedBy.length}}</span>
+					<a type="button" class="btn btn-default cross-float" data-dismiss="modal">X</a>
 				</div>
-
+            </div>
+			<div class="modal-body">
 				<div *ngFor="let names of feedData.likedBy">
 					<div class="row img-div-like">
 						<img class="image-content" src="assets/images/person.png"> {{names.name}}
 					</div>
 				</div>
 
-				<div class="modal-footer">
-					<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-				</div>
 			</div>
 
 		</div>
 	</div>
 </div>
-	
-	
-	<!-- Modal Like-->
-	<div class="modal fade" id="likeModal" role="dialog">
-		<div class="modal-dialog">
-    
-			<!-- Modal content-->
-			<div class="modal-content">
-				<div class="modal-body">
-					<div class="liked-modal-count">
-						<span class="glyphicon glyphicon-thumbs-up"></span>
-						<span *ngIf="feedData.LikedBy">{{feedData.likedBy.length}}</span>
-					</div>
-
-					<div *ngFor="let names of feedData.likedBy">
-						{{names.name}}	
-					</div>
-					
-					</div>
-
-		</div>
-	</div>
-</div>
-
-				
 
 <!-- Modal comment-->
 <div class="modal fade" id="commentModal" role="dialog">
 	<div class="modal-dialog">
 		<!-- Modal content-->
 		<div class="modal-content">
+			<div class="modal-header padding-bottom-modal-header">
+                <div>
+					<span class="glyphicon glyphicon-thumbs-up"></span>
+					<span *ngIf="feedData.likedBy">{{feedData.likedBy.length}}</span>
+					<a type="button" class="btn btn-default cross-float" data-dismiss="modal">X</a>
+				</div>
+            </div>
 			<div class="modal-body">
 				<div *ngFor="let names of feedData.commentBy">
 					<div class="row img-div-like">
@@ -109,18 +103,17 @@
 					</div>
 				</div>
 				<div>
-					<div class="input-group">
-						<input type="text" class="form-control" placeholder="comment...">
-						<span class="input-group-btn">
-							<button class="btn btn-primary" type="button">Post</button>
-						</span>
-					</div>					
-				</div>
-				<div class="modal-footer">
-					<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-				</div>
+								
+				</div>				
 			</div>
-
+			<div class="modal-footer">
+					<div class="input-group">
+						<input type="text" id="post" [(ngModel)]="post"  class="form-control" placeholder="comment...">
+						<span class="input-group-btn">
+							<button class="btn btn-primary" (click)="postComment(feedData,post)" type="button">Post</button>
+						</span>
+					</div>		
+			</div>
 		</div>
 	</div>
 </div>
@@ -130,15 +123,17 @@
 	<div class="modal-dialog">
 		<!-- Modal content-->
 		<div class="modal-content">
+			<div class="modal-header padding-bottom-modal-header">
+                <div>
+					<a type="button" class="btn btn-default cross-float" data-dismiss="modal">X</a>
+				</div>
+            </div>
 			<div class="modal-body">
-				<button type="button" class="btn btn-default cross-float row" data-dismiss="modal">X</button>
+			
 				<div class="share-modal">
 					<span class="glyphicon glyphicon-share"></span><span class="share-post-now">Post Now</span><br>
 					<span class="glyphicon glyphicon-edit"></span><span class="share-post-now">Write Post</span><br>
 					<span class="glyphicon glyphicon-comment"></span><span class="share-post-now">Send as Message</span>
-				</div>
-				<div class="modal-footer">
-					<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
 				</div>
 			</div>
 

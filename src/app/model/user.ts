@@ -1,4 +1,4 @@
-export class LoginData {
+export class User {
   username: string ;
   password: string ;
 }
