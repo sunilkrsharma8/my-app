@@ -6,6 +6,7 @@ import { FeedComponent } from '../components/feed.component';
 import { FriendRequestComponent } from '../components/friendRequest.component';
 import { LoginComponent } from '../components/login.component';
 import { AppComponent } from '../components/app.component';
+import { DashboardComponent } from '../components/dashboard.component';
 import {PageNotFoundComponent} from '../components/pageNotFound.component';
 import { AuthGuard } from '../_guards/index';
 
@@ -40,6 +41,11 @@ const routes: Routes = [
     {
 		path: 'notification',
 		component: NotificationComponent,
+		canActivate: [AuthGuard]
+	},
+	{
+		path: 'dashboard',
+		component: DashboardComponent,
 		canActivate: [AuthGuard]
 	},
 	{
