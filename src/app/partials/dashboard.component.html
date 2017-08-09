@@ -1,10 +1,8 @@
 <header-nav></header-nav>
 <div >
     <div class="col-md-9">
-        <div style="display: block;">
-            <canvas baseChart width="400" height="400" [datasets]="lineChartData" [labels]="lineChartLabels" [options]="lineChartOptions"
-                [colors]="lineChartColors" [legend]="lineChartLegend" [chartType]="lineChartType" (chartHover)="chartHovered($event)"
-                (chartClick)="chartClicked($event)"></canvas>
+        <div  [innerHTML]="theHtmlString"  style="display: block;">
+           
         </div>
     </div>
     <!-- <div class="col-md-6" style="margin-bottom: 10px">
